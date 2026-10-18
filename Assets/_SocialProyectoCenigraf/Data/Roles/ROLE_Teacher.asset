@@ -19,4 +19,4 @@ MonoBehaviour:
   entryPoint: 1
   canCreatePublications: 0
   destinationScene: {fileID: 102900000, guid: e1313e3174b3547c0b58a1c200d752e9, type: 3}
-  destinationScenePath: Assets/_SocialProyectoCenigraf/Scenes/InitialDemoScene.unity
+  destinationScenePath: Assets/_SocialProyectoCenigraf/Scenes/Deprecate/InitialDemoScene.unity

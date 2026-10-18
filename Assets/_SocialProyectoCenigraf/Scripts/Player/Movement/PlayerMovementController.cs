@@ -34,6 +34,7 @@ namespace SocialProyectoCenigraf.Player.Movement
         private bool lastReportedMoving;
 
         public Vector2 MoveInput => moveInput;
+        public bool AcceptsLocalInput => replicationContext == null || replicationContext.AcceptsLocalInput;
 
         private void Awake()
         {
@@ -70,9 +71,9 @@ namespace SocialProyectoCenigraf.Player.Movement
                 return;
             }
 
-            moveInput = moveAction == null
-                ? Vector2.zero
-                : Vector2.ClampMagnitude(moveAction.ReadValue<Vector2>(), 1f);
+            Vector2 keyboardOrGamepad = moveAction == null ? Vector2.zero : moveAction.ReadValue<Vector2>();
+            Vector2 touch = SocialProyectoCenigraf.Mobile.MobileControls.Movement;
+            moveInput = Vector2.ClampMagnitude(touch.sqrMagnitude > 0f ? touch : keyboardOrGamepad, 1f);
 
             bool isMoving = moveInput.sqrMagnitude > DirectionThreshold;
             if (isMoving != lastReportedMoving)

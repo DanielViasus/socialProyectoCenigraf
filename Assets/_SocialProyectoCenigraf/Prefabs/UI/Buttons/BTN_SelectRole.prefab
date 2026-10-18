@@ -66,10 +66,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Estudiante
+  m_text: Aprendiz
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 64792600f61ce40d5bd80714a733aaa8, type: 2}
+  m_sharedMaterial: {fileID: -6116662690515481932, guid: 64792600f61ce40d5bd80714a733aaa8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -484,7 +484,7 @@ MonoBehaviour:
   button: {fileID: 6834080446525009389}
   roleDefinition: {fileID: 0}
   icon: {fileID: 1676010677255496533, guid: d30a744ceab00460388e72e1855f00e5, type: 3}
-  title: Estudiante
+  title: Aprendiz
   backgroundColor: {r: 0.37, g: 0.69, b: 0.76, a: 1}
 --- !u!1 &6404618208044328427
 GameObject:

@@ -31,7 +31,7 @@ namespace SocialProyectoCenigraf.Player.State
         public Vector2 Position => position;
         public string RoleId => string.IsNullOrWhiteSpace(roleId)
             ? DefaultRoleId
-            : roleId;
+            : SocialProyectoCenigraf.Roles.RoleIds.Normalize(roleId);
         public string SkinId => string.IsNullOrWhiteSpace(skinId)
             ? DefaultSkinId
             : skinId;
@@ -70,7 +70,7 @@ namespace SocialProyectoCenigraf.Player.State
             this.position = position;
             this.roleId = string.IsNullOrWhiteSpace(roleId)
                 ? DefaultRoleId
-                : roleId.Trim();
+                : SocialProyectoCenigraf.Roles.RoleIds.Normalize(roleId);
             this.skinId = string.IsNullOrWhiteSpace(skinId)
                 ? DefaultSkinId
                 : skinId;

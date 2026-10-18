@@ -14,6 +14,7 @@ namespace SocialProyectoCenigraf.Roles
 
         public RoleDefinition FindById(string roleId)
         {
+            roleId = RoleIds.Normalize(roleId);
             if (string.IsNullOrWhiteSpace(roleId))
             {
                 return null;

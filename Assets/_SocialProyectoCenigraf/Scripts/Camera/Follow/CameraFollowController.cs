@@ -191,6 +191,28 @@ namespace SocialProyectoCenigraf.CameraSystem.Follow
             TrimHistory(state.DelaySeconds);
         }
 
+        /// <summary>Places the camera at the resolved spawn without retaining delay or smoothing from the previous position.</summary>
+        public void SnapToTarget()
+        {
+            if (playerStateStore == null || cameraStateStore == null || attachedCamera == null) return;
+            CameraStateData state = cameraStateStore.State;
+            Vector2 target = playerStateStore.State.Position;
+            cameraStateStore.Dispatch(CameraAction.SetTargetPosition(target));
+            positionHistory.Clear();
+            AddPositionSample(target);
+            smoothingVelocity = Vector2.zero;
+            attachedCamera.orthographicSize = state.Zoom;
+            Vector2 next = target;
+            if (cameraBounds != null && cameraBounds.isActiveAndEnabled)
+                next = cameraBounds.ConstrainPosition(next, state.Zoom, attachedCamera.aspect);
+            continuousPosition = next;
+            Vector2 rendered = state.PixelSnapEnabled ? SnapToScreenPixel(next) : next;
+            if (cameraBounds != null && cameraBounds.isActiveAndEnabled)
+                rendered = cameraBounds.ConstrainPosition(rendered, state.Zoom, attachedCamera.aspect);
+            cameraStateStore.Dispatch(CameraAction.SetPosition(rendered));
+            transform.position = new Vector3(rendered.x, rendered.y, cameraZ);
+        }
+
         private Vector2 SnapToScreenPixel(Vector2 position)
         {
             if (attachedCamera == null ||

@@ -111,7 +111,7 @@ namespace SocialProyectoCenigraf.UI
                 buttons,
                 "Ir al juego",
                 gameVisualStyle,
-                () => SceneNavigationService.Instance.NavigateTo("SceneDemo"),
+                () => SceneNavigationService.Instance.NavigateTo("Plaza_Central"),
                 true);
         }
 
