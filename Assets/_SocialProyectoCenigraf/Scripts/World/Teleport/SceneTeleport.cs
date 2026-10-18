@@ -50,7 +50,7 @@ namespace SocialProyectoCenigraf.World.Teleport
         private static bool IsPlayer(Collider2D other)
         {
             var movement = other.GetComponentInParent<PlayerMovementController>();
-            return movement != null && movement.isActiveAndEnabled;
+            return movement != null && movement.AcceptsLocalInput && movement.isActiveAndEnabled;
         }
         private void Update()
         {
@@ -69,7 +69,7 @@ namespace SocialProyectoCenigraf.World.Teleport
             foreach (var collider in occupants)
             {
                 var player = collider.GetComponentInParent<PlayerMovementController>();
-                if (player == null || !player.isActiveAndEnabled) continue;
+                if (player == null || !player.AcceptsLocalInput || !player.isActiveAndEnabled) continue;
                 TryTravel(player);
                 break;
             }
@@ -84,7 +84,7 @@ namespace SocialProyectoCenigraf.World.Teleport
         }
         public bool TryTravel(PlayerMovementController player)
         {
-            if (player == null || !player.isActiveAndEnabled || TeleportTravel.IsTraveling
+            if (player == null || !player.AcceptsLocalInput || !player.isActiveAndEnabled || TeleportTravel.IsTraveling
                 || SocialProyectoCenigraf.Dialogue.DialoguePresenter.IsOpen
                 || SocialProyectoCenigraf.Rewards.RewardWindow.IsOpen
                 || string.IsNullOrWhiteSpace(destinationScenePath)) return false;
@@ -109,7 +109,7 @@ namespace SocialProyectoCenigraf.World.Teleport
         public Vector3 InteractionPosition => transform.position;
         public bool CanInteractWith(PlayerMovementController player)
         {
-            if (player == null || !player.isActiveAndEnabled || TeleportTravel.IsTraveling
+            if (player == null || !player.AcceptsLocalInput || !player.isActiveAndEnabled || TeleportTravel.IsTraveling
                 || SocialProyectoCenigraf.Dialogue.DialoguePresenter.IsOpen
                 || SocialProyectoCenigraf.Rewards.RewardWindow.IsOpen
                 || string.IsNullOrWhiteSpace(destinationScenePath)) return false;

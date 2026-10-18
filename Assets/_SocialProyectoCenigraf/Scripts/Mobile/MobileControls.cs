@@ -61,9 +61,11 @@ namespace SocialProyectoCenigraf.Mobile
         }
         private void LateUpdate()
         {
+            if (player != null && !player.AcceptsLocalInput) player = null;
             if (player == null && Time.unscaledTime >= nextPlayerSearch)
             {
-                player = FindFirstObjectByType<PlayerMovementController>();
+                foreach (var candidate in FindObjectsByType<PlayerMovementController>(FindObjectsSortMode.None))
+                    if (candidate.AcceptsLocalInput) { player = candidate; break; }
                 nextPlayerSearch = Time.unscaledTime + 0.25f;
             }
             bool show = player != null && player.gameObject.activeInHierarchy && !TeleportTravel.IsTraveling;

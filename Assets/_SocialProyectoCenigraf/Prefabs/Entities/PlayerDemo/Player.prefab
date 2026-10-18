@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8f0ebbf589294c349efae18711876d8, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::SocialProyectoCenigraf.Player.State.PlayerStateRuntimeApplier
 --- !u!212 &1281971274682152047
 SpriteRenderer:
@@ -517,7 +517,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1d6c88f926d94a02bac347c4fcaafaf, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::SocialProyectoCenigraf.Player.Movement.PlayerMovementController
   moveSpeed: 2
   collisionMask:
@@ -640,6 +640,9 @@ GameObject:
   - component: {fileID: 5678115734893736012}
   - component: {fileID: 1246731071397304960}
   - component: {fileID: 8805343624174990725}
+  - component: {fileID: 903874520110229001}
+  - component: {fileID: 903874520110229002}
+  - component: {fileID: 2358469737244116739}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -716,7 +719,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd20322b139114b318d6301d7f7c524c, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::SocialProyectoCenigraf.Player.State.PlayerStateStore
   state:
     position: {x: 0, y: 0}
@@ -732,6 +735,34 @@ MonoBehaviour:
     headColor: {r: 0, g: 0, b: 0, a: 0}
     bodyColor: {r: 0, g: 0, b: 0, a: 0}
     handsColor: {r: 0, g: 0, b: 0, a: 0}
+    playerId: local-player
+    isMoving: 0
+--- !u!114 &903874520110229001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4934931351137026194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f184afd5206e4dc7ae9a5e3bb80c12a1, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::SocialProyectoCenigraf.Player.Replication.PlayerReplicationContext
+  playerId: local-player
+  authority: 0
+--- !u!114 &903874520110229002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4934931351137026194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25d4c399e3c24715a1f739b9729ecf36, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::SocialProyectoCenigraf.Player.Replication.PlayerReplicationBridge
 --- !u!4 &5182950186538311794
 Transform:
   m_ObjectHideFlags: 0
@@ -824,7 +855,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed2362e96038449d58e63cabfc3aee13, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::SocialProyectoCenigraf.World.Rendering.WorldYSort
   sortPoint: {fileID: 2779914913264033425}
   targetSortingGroup: {fileID: 4878359861214467974}
@@ -1102,7 +1133,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
   m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_NotificationBehavior: 0
@@ -1118,7 +1149,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -1148,7 +1179,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 789a2d602e79d48cc8a133454365d1e2, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::SocialProyectoCenigraf.Player.Visual.PlayerLayeredSkinController
   skinCatalog: {fileID: 11400000, guid: fe360826ed6c84dd7abe77f893937285, type: 2}
   layerOrderProfile: {fileID: 11400000, guid: 4cfbe64dc533a4027af7465096e5d896, type: 2}
@@ -1178,3 +1209,20 @@ Transform:
   - {fileID: 5182950186538311794}
   m_Father: {fileID: 7151205123803538926}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2358469737244116739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4934931351137026194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4e178eeca4b014091f3ec8f37039ab, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Networking.Runtime.Controllers.PlayerNetworkSync
+  _isLocalPlayer: 1
+  _remoteUserId:
+  _syncRateHz: 20
+  _minimumMovementThreshold: 0.01
+  _interpolationSpeed: 15

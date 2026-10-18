@@ -38,7 +38,7 @@ namespace SocialProyectoCenigraf.World
         private static bool IsPlayer(Collider2D other)
         {
             var player = other.GetComponentInParent<PlayerMovementController>();
-            return player != null && player.isActiveAndEnabled;
+            return player != null && player.AcceptsLocalInput && player.isActiveAndEnabled;
         }
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -88,7 +88,7 @@ namespace SocialProyectoCenigraf.World
         public Vector3 InteractionPosition => transform.position;
         public bool CanInteractWith(PlayerMovementController player)
         {
-            if (player == null || !player.isActiveAndEnabled || DialoguePresenter.IsOpen || RewardWindow.IsOpen
+            if (player == null || !player.AcceptsLocalInput || !player.isActiveAndEnabled || DialoguePresenter.IsOpen || RewardWindow.IsOpen
                 || dialogueCatalog == null || !dialogueCatalog.TryGet(dialogueId, out _)) return false;
             foreach (var collider in occupants)
                 if (collider != null && collider.enabled && collider.gameObject.activeInHierarchy
