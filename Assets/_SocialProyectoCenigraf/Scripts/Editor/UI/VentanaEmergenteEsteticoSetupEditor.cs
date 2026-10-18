@@ -48,8 +48,8 @@ namespace SocialProyectoCenigraf.Editor.UI
             "Assets/_SocialProyectoCenigraf/Data/Player/Skins/" +
             "Default_PlayerLayerOrderProfile.asset";
         private const string FontAssetPath =
-            "Assets/TextMesh Pro/Resources/Fonts & Materials/" +
-            "LiberationSans SDF.asset";
+            "Assets/_SocialProyectoCenigraf/Asset/Fonts/PressStart2P/" +
+            "PressStart2P SDF.asset";
 
         [MenuItem(
             "Tools/Cenigraf/UI/Configure Ventana Emergente Estetico %#e")]

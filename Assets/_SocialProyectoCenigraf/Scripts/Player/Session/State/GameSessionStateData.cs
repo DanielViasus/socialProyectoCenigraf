@@ -8,12 +8,12 @@ namespace SocialProyectoCenigraf.Session.State
     {
         [SerializeField] private string selectedRoleId;
 
-        public string SelectedRoleId => selectedRoleId ?? string.Empty;
+        public string SelectedRoleId => SocialProyectoCenigraf.Roles.RoleIds.Normalize(selectedRoleId);
         public bool HasSelectedRole => !string.IsNullOrWhiteSpace(selectedRoleId);
 
         public GameSessionStateData(string selectedRoleId)
         {
-            this.selectedRoleId = selectedRoleId ?? string.Empty;
+            this.selectedRoleId = SocialProyectoCenigraf.Roles.RoleIds.Normalize(selectedRoleId);
         }
 
         public GameSessionStateData WithSelectedRole(string roleId) =>

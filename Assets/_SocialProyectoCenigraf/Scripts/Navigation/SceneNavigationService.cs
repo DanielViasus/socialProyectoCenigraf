@@ -34,7 +34,8 @@ namespace SocialProyectoCenigraf.Navigation
             }
         }
 
-        public bool CanGoBack => sceneHistory.Count > 0 && !isLoadingScene;
+        public bool CanGoBack => sceneHistory.Count > 0 && !isLoadingScene
+            && !SocialProyectoCenigraf.World.Teleport.TeleportTravel.IsTraveling;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics()
@@ -90,7 +91,8 @@ namespace SocialProyectoCenigraf.Navigation
 
         public void NavigateTo(string destinationSceneName)
         {
-            if (isLoadingScene || !CanLoadScene(destinationSceneName))
+            if (isLoadingScene || SocialProyectoCenigraf.World.Teleport.TeleportTravel.IsTraveling
+                || !CanLoadScene(destinationSceneName))
             {
                 return;
             }

@@ -15,7 +15,7 @@ namespace SocialProyectoCenigraf.Roles
     public sealed class RoleDefinition : ScriptableObject
     {
         [Header("Identity")]
-        [Tooltip("Stable identifier used by the state, for example: student.")]
+        [Tooltip("Stable identifier used by the state, for example: apprentice.")]
         [SerializeField] private string id = "new-role";
 
         [Tooltip("Name presented to the user.")]
@@ -40,7 +40,7 @@ namespace SocialProyectoCenigraf.Roles
 
         [SerializeField, HideInInspector] private string destinationScenePath;
 
-        public string Id => id;
+        public string Id => RoleIds.Normalize(id);
         public string DisplayName => displayName;
         public Sprite Icon => icon;
         public Color ButtonColor => buttonColor;
@@ -66,7 +66,7 @@ namespace SocialProyectoCenigraf.Roles
                 return "new-role";
             }
 
-            return value.Trim().ToLowerInvariant().Replace(' ', '-');
+            return RoleIds.Normalize(value.Trim().ToLowerInvariant().Replace(' ', '-'));
         }
 #endif
     }
