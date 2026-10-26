@@ -114,7 +114,7 @@ namespace SocialProyectoCenigraf.Navigation
                 return;
             }
 
-            string previousSceneName = sceneHistory.Pop();
+            string previousSceneName = sceneHistory.Peek();
             if (!CanLoadScene(previousSceneName))
             {
                 Debug.LogError(
@@ -123,7 +123,17 @@ namespace SocialProyectoCenigraf.Navigation
                 return;
             }
 
+            sceneHistory.Pop();
             LoadScene(previousSceneName);
+        }
+
+        public void GoBackOrTo(string fallbackSceneName)
+        {
+            if (isLoadingScene || SocialProyectoCenigraf.World.Teleport.TeleportTravel.IsTraveling) return;
+            if (CanGoBack) { GoBack(); return; }
+            if (SceneManager.GetActiveScene().name == fallbackSceneName || !CanLoadScene(fallbackSceneName)) return;
+            // Direct entry in the Editor has no history. Don't add a return loop.
+            LoadScene(fallbackSceneName);
         }
 
         private void HandleBackPerformed(InputAction.CallbackContext context)
